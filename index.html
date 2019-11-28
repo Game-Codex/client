@@ -171,21 +171,89 @@
 
     <!-- Dota Page -->
     <div id="dota-page position-relative" style="height: 100vh;">
-      <nav
-        class="nav nav-pills d-flex flex-nowrap mt-5 ml-2"
-        id="nav-hero-roles"
-      >
-        <a class="nav-link d-inline-block active" href="">All Roles</a>
-        <a class="nav-link d-inline-block" href="">Carry</a>
-        <a class="nav-link d-inline-block" href="">Escape</a>
-        <a class="nav-link d-inline-block" href="">Nuker</a>
-        <a class="nav-link d-inline-block" href="">Initiator</a>
-        <a class="nav-link d-inline-block" href="">Durable</a>
-        <a class="nav-link d-inline-block" href="">Disabler</a>
-        <a class="nav-link d-inline-block" href="">Jungler</a>
-        <a class="nav-link d-inline-block" href="">Support</a>
-        <a class="nav-link d-inline-block" href="">Pusher</a>
-      </nav>
+      <div class="d-flex flex-wrap justify-content-between">
+        <nav
+          class="nav nav-pills d-flex flex-nowrap mt-5 ml-3"
+          id="nav-hero-roles"
+        >
+          <a
+            class="nav-link d-inline-block active"
+            href=""
+            onclick="filterHeroByRole('all')"
+            >All Roles</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('carry')"
+            >Carry</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('escape')"
+            >Escape</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('nuker')"
+            >Nuker</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('initiator')"
+            >Initiator</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('durable')"
+            >Durable</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('disabler')"
+            >Disabler</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('jungler')"
+            >Jungler</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('support')"
+            >Support</a
+          >
+          <a
+            class="nav-link d-inline-block"
+            href=""
+            onclick="filterHeroByRole('pusher')"
+            >Pusher</a
+          >
+        </nav>
+        <form class="form-inline mt-0 mt-xl-4 mr-5">
+          <div class="form-group mx-3 mb-2 position-relative">
+            <i
+              class="fas fa-search position-absolute text-muted ml-2"
+              id="search-icon"
+            ></i>
+            <input
+              type="search"
+              class="form-control"
+              id="dota-hero-search"
+              placeholder="Search hero"
+              style="padding-left: 2rem;"
+            />
+          </div>
+        </form>
+      </div>
+
       <div
         id="hero-cards"
         class="d-flex flex-wrap justify-content-center justify-content-sm-start"

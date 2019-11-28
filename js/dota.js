@@ -40,3 +40,9 @@ function arrangeCards() {
     `)
   }
 }
+
+function filterHeroByRole(role) {
+  filteredDotaHeroes = dotaHeroes.filter(hero=> {
+    return hero.
+  })
+}
