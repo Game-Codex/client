@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="google-signin-client_id" content="321863679053-qi4ehssn7cpj1foj35sl9686hhboado3.apps.googleusercontent.com">
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
@@ -112,6 +113,26 @@
       </div>
     </div>
     <!--end pokemon-->
+    
+    <div id="login" class="text-center d-flex justify-content-center" style="width:25%">
+        <form class="form-signin">
+            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-danger btn-block" type="submit" onclick="signOut();">Sign out</button>
+            <div class="g-signin2 mt-2" data-onsuccess="onSignIn"></div>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+          </form>
+    </div>
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script
@@ -135,6 +156,7 @@
     ></script>
 
     <script src="js/pokemon.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/yugioh.js"></script>
     <script src="js/main.js"></script>
   </body>
