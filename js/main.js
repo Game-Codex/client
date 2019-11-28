@@ -1,1 +1,4 @@
-$(document).ready();
+$(document).ready(function() {
+
+   pokemonPopulate()
+})
