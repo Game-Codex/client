@@ -1,0 +1,25 @@
+#home-page {
+  margin: 0px;
+  padding: 0px;
+  background-image: url("https://indorpg.com/images/bgmon.jpg");
+  width: 100%;
+  height: 89vh;
+}
+
+#home-menu {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  height: 200px;
+}
+
+#home-menu img {
+  transition: transform 0.5s ease;
+}
+
+#home-menu img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.8s;
+}
