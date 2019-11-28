@@ -10,19 +10,97 @@
       integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <!--all css-->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/home.css" />
     <title>Game Codex</title>
   </head>
   <body>
-    
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow p-1 mb-0">
+      <a class="navbar-brand" href="#"
+        ><img
+          src="./img/logo2-home.webp"
+          width="60px"
+          height="60px"
+          alt="logo-home"
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" style="font-size: 30px; color: white;"
+              >Game-Codex</a
+            >
+          </li>
+        </ul>
+        <button type="button" class="btn btn-dark mr-3">SignOut</button>
+      </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!--homepage-->
+    <div id="home-page">
+      <div id="home-menu">
+        <div
+          class="card just"
+          style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px grey;"
+        >
+          <img
+            class="card-img-top"
+            src="./img/yugioh-poster.png"
+            alt="Card image cap"
+          />
+        </div>
+
+        <div
+          class="card"
+          style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px grey;"
+        >
+          <img
+            class="card-img-top"
+            src="./img/pokemon-poster.png"
+            alt="Card image cap"
+            height="400px"
+          />
+        </div>
+
+        <div
+          class="card"
+          style="width: 18rem; margin-top: 80px; height: 400px; box-shadow: 10px 8px grey;"
+        >
+          <img
+            class="card-img-top"
+            src="./img/dota-poster.jpg"
+            alt="Card image cap"
+            height="400px"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- end homepage -->
+
+    <!--pokemon-->
     <div id="pokemon">
-      
       <div class="container">
-
         <div id="pokemon-cards">
-
           <div id="pokemon-search-bar">
-            
-            <input type="text" id="pokemon-search-input">
+            <input type="text" id="pokemon-search-input" />
           </div>
 
           <div id="pokemon-card-board">
@@ -33,7 +111,7 @@
         <div class="pagination"></div>
       </div>
     </div>
-
+    <!--end pokemon-->
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script
