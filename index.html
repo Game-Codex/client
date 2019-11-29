@@ -18,6 +18,10 @@
       href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
     <!--all css-->
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="css/dota.css" />
@@ -54,7 +58,9 @@
             >
           </li>
         </ul>
-        <button type="button" class="btn btn-dark mr-3" onclick="signOut();">SignOut</button>
+        <button type="button" class="btn btn-dark mr-3" onclick="signOut();">
+          SignOut
+        </button>
       </div>
     </nav>
     <!-- end navbar -->
@@ -118,77 +124,85 @@
     </div>
     <!--end pokemon-->
 
-    
-
     <!-- Dota Page -->
     <div id="dota-page position-relative" style="height: 100vh;">
       <div class="d-flex flex-wrap justify-content-between">
         <nav
-          class="nav nav-pills d-flex flex-nowrap mt-5 ml-3"
+          class="nav nav-pills d-flex flex-nowrap mt-5 ml-3 "
           id="nav-hero-roles"
         >
           <a
             class="nav-link d-inline-block active"
             href=""
             onclick="filterHeroByRole('all')"
+            id="all"
             >All Roles</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('carry')"
+            id="carry"
             >Carry</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('escape')"
+            id="escape"
             >Escape</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('nuker')"
+            id="nuker"
             >Nuker</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('initiator')"
+            id="initiator"
             >Initiator</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('durable')"
+            id="durable"
             >Durable</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('disabler')"
+            id="disabler"
             >Disabler</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('jungler')"
+            id="jungler"
             >Jungler</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('support')"
+            id="support"
             >Support</a
           >
           <a
             class="nav-link d-inline-block"
             href=""
             onclick="filterHeroByRole('pusher')"
+            id="pusher"
             >Pusher</a
           >
         </nav>
-        <form class="form-inline mt-0 mt-xl-4 mr-5">
+        <form class="form-inline mt-0 mt-xl-4 ">
           <div class="form-group mx-3 mb-2 position-relative">
             <i
               class="fas fa-search position-absolute text-muted ml-2"
@@ -200,64 +214,129 @@
               id="dota-hero-search"
               placeholder="Search hero"
               style="padding-left: 2rem;"
+              oninput="searchHeroByName()"
             />
           </div>
         </form>
       </div>
 
       <div
-        id="hero-cards"
         class="d-flex flex-wrap justify-content-center justify-content-sm-start"
         style="position: absolute; width: 100%; height: 100%; overflow-x: hidden; overflow-y: scroll;"
-      ></div>
+      >
+        <div
+          id="dota-hero-cards"
+          class="d-flex flex-wrap justify-content-center justify-content-sm-start"
+        ></div>
+
+        <div
+          class="d-flex justify-content-center w-100"
+          id="dota-hero-detail"
+        ></div>
+      </div>
     </div>
     <!-- End Dota Page -->
-    
+
     <!-- login -->
-    <div id="login" class="mt-5 container text-center justify-content-center border rounded-sm bg-light" style="width:30%; height:75vh">
-        <form id="login-form">
-            <a class="navbar-brand" href="#"><img
-              src="./img/logo2-home.webp"
-              width="60px"
-              height="60px"
-              alt="logo-home"/>
-            </a>
-            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-            <input id="login-email" name="email" type="email" class="form-control mb-2" placeholder="Email address" required autofocus>
-            <input id="login-password" name="password" type="password" class="form-control mb-2" placeholder="Password" required>
-            <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">Sign in</button>
-            <hr>
-            <div class="container row">
-                <div class="col-md-4"></div>
-                <div id="google-btn" class="g-signin2 mt-2 col-md-4" data-onsuccess="onSignIn" style="width: 100%"></div>
-                <div class="col-md-4"></div>
-            </div>
-            <p class="mt-2 text-center text-secondary">Don't have an account?<a href="#" id="reg-link"> Sign up</a></p> 
-            <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
-          </form>
+    <div
+      id="login"
+      class="mt-5 container text-center justify-content-center border rounded-sm bg-light"
+      style="width:30%; height:75vh"
+    >
+      <form id="login-form">
+        <a class="navbar-brand" href="#"
+          ><img
+            src="./img/logo2-home.webp"
+            width="60px"
+            height="60px"
+            alt="logo-home"
+          />
+        </a>
+        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+        <input
+          id="login-email"
+          name="email"
+          type="email"
+          class="form-control mb-2"
+          placeholder="Email address"
+          required
+          autofocus
+        />
+        <input
+          id="login-password"
+          name="password"
+          type="password"
+          class="form-control mb-2"
+          placeholder="Password"
+          required
+        />
+        <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">
+          Sign in
+        </button>
+        <hr />
+        <div class="container row">
+          <div class="col-md-4"></div>
+          <div
+            id="google-btn"
+            class="g-signin2 mt-2 col-md-4"
+            data-onsuccess="onSignIn"
+            style="width: 100%"
+          ></div>
+          <div class="col-md-4"></div>
+        </div>
+        <p class="mt-2 text-center text-secondary">
+          Don't have an account?<a href="#" id="reg-link"> Sign up</a>
+        </p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+      </form>
     </div>
     <!-- end login -->
 
     <!-- register -->
-    <div id="register" class="mt-5 container text-center justify-content-center border rounded-sm bg-light" style="width:30%; height:75vh">
+    <div
+      id="register"
+      class="mt-5 container text-center justify-content-center border rounded-sm bg-light"
+      style="width:30%; height:75vh"
+    >
       <form id="register-form">
-          <a class="navbar-brand" href="#"><img
+        <a class="navbar-brand" href="#"
+          ><img
             src="./img/logo2-home.webp"
             width="60px"
             height="60px"
-            alt="logo-home"/>
-          </a>
-          <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-          <input id="reg-email" name="email" type="email" class="form-control mb-2" placeholder="Email address" required autofocus>
-          <input id="reg-password" name="password" type="password" class="form-control mb-2" placeholder="Password" required>
-          <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">Register</button>
-          <p class="mt-2 text-center text-secondary">Already have an account?<a href="#" id="login-link"> Sign in</a></p>
-          <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
-        </form>
+            alt="logo-home"
+          />
+        </a>
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        <input
+          id="reg-email"
+          name="email"
+          type="email"
+          class="form-control mb-2"
+          placeholder="Email address"
+          required
+          autofocus
+        />
+        <input
+          id="reg-password"
+          name="password"
+          type="password"
+          class="form-control mb-2"
+          placeholder="Password"
+          required
+        />
+        <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">
+          Register
+        </button>
+        <p class="mt-2 text-center text-secondary">
+          Already have an account?<a href="#" id="login-link"> Sign in</a>
+        </p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+      </form>
     </div>
     <!-- end register -->
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
@@ -280,6 +359,7 @@
       crossorigin="anonymous"
     ></script>
 
+    <script src="js/global-utils.js"></script>
     <script src="js/pokemon.js"></script>
     <script src="js/register.js"></script>
     <script src="js/loginGoogle.js"></script>
