@@ -1,0 +1,110 @@
+#pokemon-cards {
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   
+}
+
+#form-pokemon-search {
+   padding: 0.618rem;
+   text-align: center;
+}
+
+#pokemon-card-board {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   padding: 0.618rem;
+   
+}
+
+#pokemon-card-board-tabs {
+
+   display: flex;
+   justify-content: space-around;
+   padding: 0.618rem;
+}
+
+/* only type all card list getting shown */
+
+#pokemon-card-type1,
+#pokemon-card-type2,
+#pokemon-card-type3 {
+
+   display: none;
+}
+
+#pokemon-card-list {
+
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   overflow: auto;
+   max-height: 61.8vh;
+}
+
+.individual-card {
+
+   /* height: 100px; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 1rem;
+   width: 100px;
+
+   /* border: 1px dotted grey; */
+}
+
+.individual-card-image {
+   text-align: center;
+   max-height: 138px;
+}
+
+.pokemon-tab {
+   display: flex;
+   justify-content: center;
+   width: 100px;
+   cursor: pointer;
+}
+
+.pokemon-tab:hover {
+
+   font-size: 1.25rem;
+   color: coral;
+}
+
+.tab-selected {
+   background: red;
+   color: white;
+}
+
+.tab-selected span {
+   text-align: center;
+}
+
+/* pokemon detail */
+
+#pokemon-detail {
+   display: flex;
+   justify-content: space-around;
+}
+
+#pokemon-detail-body {
+   padding-left: 50px;
+}
+
+#pokemon-detail-wrapper {
+   padding: 1rem;
+   display: none
+}
+
+#pokemon-detail-header {
+   display: flex;
+   align-items: center;
+}
+
+#pokemon-detail-name,
+#pokemon-detail-type {
+
+   padding: 1rem;
+}
