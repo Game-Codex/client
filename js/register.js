@@ -8,13 +8,13 @@ function showRegister() {
 }
 
 function submitRegister() {
-    console.log(serverUrl, '<<<<<<<<<<,,,')
     $('#register-form').on('submit', function(event) {
         event.preventDefault()
         $.ajax({
             method: 'POST',
             url: `${serverUrl}/register`,
             data: {
+                username: $('#reg-username').val(),
                 email : $('#reg-email').val(),
                 password : $('#reg-password').val()
             }            
@@ -23,6 +23,6 @@ function submitRegister() {
             console.log(user)
             $('#register').hide()  
             $('#login').show() 
-        })
+        }).fail(err => console.log(err))
     })
 }
