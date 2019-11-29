@@ -54,7 +54,7 @@
             >
           </li>
         </ul>
-        <button type="button" class="btn btn-dark mr-3">SignOut</button>
+        <button type="button" class="btn btn-dark mr-3" onclick="signOut();">SignOut</button>
       </div>
     </nav>
     <!-- end navbar -->
@@ -118,56 +118,7 @@
     </div>
     <!--end pokemon-->
 
-    <div
-      id="login"
-      class="text-center d-flex justify-content-center"
-      style="width:25%"
-    >
-      <form class="form-signin">
-        <img
-          class="mb-4"
-          src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
-          alt=""
-          width="72"
-          height="72"
-        />
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input
-          type="email"
-          id="inputEmail"
-          class="form-control"
-          placeholder="Email address"
-          required
-          autofocus
-        />
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input
-          type="password"
-          id="inputPassword"
-          class="form-control"
-          placeholder="Password"
-          required
-        />
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me" /> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
-          Sign in
-        </button>
-        <button
-          class="btn btn-lg btn-danger btn-block"
-          type="submit"
-          onclick="signOut();"
-        >
-          Sign out
-        </button>
-        <div class="g-signin2 mt-2" data-onsuccess="onSignIn"></div>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-      </form>
-    </div>
+    
 
     <!-- Dota Page -->
     <div id="dota-page position-relative" style="height: 100vh;">
@@ -261,6 +212,51 @@
       ></div>
     </div>
     <!-- End Dota Page -->
+    
+    <!-- login -->
+    <div id="login" class="mt-5 container text-center justify-content-center border rounded-sm bg-light" style="width:30%; height:75vh">
+        <form id="login-form">
+            <a class="navbar-brand" href="#"><img
+              src="./img/logo2-home.webp"
+              width="60px"
+              height="60px"
+              alt="logo-home"/>
+            </a>
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <input id="login-email" name="email" type="email" class="form-control mb-2" placeholder="Email address" required autofocus>
+            <input id="login-password" name="password" type="password" class="form-control mb-2" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">Sign in</button>
+            <hr>
+            <div class="container row">
+                <div class="col-md-4"></div>
+                <div id="google-btn" class="g-signin2 mt-2 col-md-4" data-onsuccess="onSignIn" style="width: 100%"></div>
+                <div class="col-md-4"></div>
+            </div>
+            <p class="mt-2 text-center text-secondary">Don't have an account?<a href="#" id="reg-link"> Sign up</a></p> 
+            <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+          </form>
+    </div>
+    <!-- end login -->
+
+    <!-- register -->
+    <div id="register" class="mt-5 container text-center justify-content-center border rounded-sm bg-light" style="width:30%; height:75vh">
+      <form id="register-form">
+          <a class="navbar-brand" href="#"><img
+            src="./img/logo2-home.webp"
+            width="60px"
+            height="60px"
+            alt="logo-home"/>
+          </a>
+          <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+          <input id="reg-email" name="email" type="email" class="form-control mb-2" placeholder="Email address" required autofocus>
+          <input id="reg-password" name="password" type="password" class="form-control mb-2" placeholder="Password" required>
+          <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">Register</button>
+          <p class="mt-2 text-center text-secondary">Already have an account?<a href="#" id="login-link"> Sign in</a></p>
+          <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+        </form>
+    </div>
+    <!-- end register -->
+
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -285,6 +281,8 @@
     ></script>
 
     <script src="js/pokemon.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/loginGoogle.js"></script>
     <script src="js/login.js"></script>
     <script src="js/dota.js"></script>
     <script src="js/yugioh.js"></script>
