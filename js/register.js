@@ -7,23 +7,23 @@
 //     })
 // }
 
-function submitRegister() {
-  $('#register-form').on('submit', function(event) {
-    event.preventDefault()
-    $.ajax({
-      method: 'POST',
-      url: `${serverUrl}/register`,
-      data: {
-        username: $('#reg-username').val(),
-        email: $('#reg-email').val(),
-        password: $('#reg-password').val()
-      }
-    })
-      .done(user => {
-        console.log(user)
-        $('#register').hide()
-        $('#login').show()
-      })
-      .fail(err => console.log(err))
+function submitRegister(e) {
+  if (e) e.preventDefault()
+  toast('Loading')
+  $.ajax({
+    method: 'POST',
+    url: `${serverUrl}/register`,
+    data: {
+      username: $('#reg-username').val(),
+      email: $('#reg-email').val(),
+      password: $('#reg-password').val()
+    }
   })
+    .done(user => {
+      Swal.close()
+      console.log(user)
+      $('#register').hide()
+      $('#login').show()
+    })
+    .fail(err => console.log(err))
 }
