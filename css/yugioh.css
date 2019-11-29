@@ -1,0 +1,171 @@
+#yugioh-page {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 88vh;
+}
+
+.jumbotron {
+  padding-top: 21px;
+  padding-left: 0px;
+}
+
+#list-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#list-cards-wait {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+figure:nth-child(1) {
+  margin-left: 0px;
+}
+
+figure:nth-child(7) {
+  margin-left: 0px;
+}
+
+figure {
+  margin-left: 16px;
+}
+
+figure img {
+  transition: 0.5s;
+}
+
+figure img:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#detail-card {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#detailcard-info {
+  width: 50%;
+}
+
+#detailcard-img {
+  box-shadow: 5px 2px rgba(0, 0, 0, 0.7);
+  height: 390px;
+}
+
+#card-name {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 20px;
+  overflow: hidden;
+  text-align: left;
+  align-items: center;
+  background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 5px 10px;
+}
+
+#card-id {
+  padding: 5px 10px;
+
+  margin-top: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 20px;
+  overflow: hidden;
+  background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#card-type {
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 20px;
+  overflow: hidden;
+  background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#card-archetype {
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 20px;
+  overflow: hidden;
+  background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#card-desc {
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 20px;
+  overflow: hidden;
+  height: 207px;
+  width: 100%;
+  background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#btn-back-cardlist {
+  margin-left: 150px;
+}

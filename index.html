@@ -8,6 +8,7 @@
       name="google-signin-client_id"
       content="321863679053-qi4ehssn7cpj1foj35sl9686hhboado3.apps.googleusercontent.com"
     />
+    <link rel="shortcut icon" href="./img/icon.png" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="css/dota.css" />
     <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/yugioh.css" />
     <title>Game Codex</title>
   </head>
   <body>
@@ -53,7 +55,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#" style="font-size: 30px; color: white;"
+            <a
+              id="game-codex"
+              class="nav-link"
+              href="#"
+              style="font-size: 30px; background: -webkit-linear-gradient(rgb(252, 250, 250), rgb(126, 121, 121));
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;"
               >Game-Codex</a
             >
           </li>
@@ -67,10 +75,20 @@
 
     <!--homepage-->
     <div id="home-page">
+      <div class="fullscreen-video-wrap">
+        <video
+          id="vidio-bg"
+          src="./vidio/yugi.mp4"
+          autoplay="true"
+          loop="true"
+        ></video>
+      </div>
+      <div class="header-overlay"></div>
       <div id="home-menu">
         <div
-          class="card just"
-          style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px grey;"
+          class="card"
+          id="go-yugioh"
+          style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px rgba(100, 100, 100, 0.5);"
         >
           <img
             class="card-img-top"
@@ -81,7 +99,7 @@
 
         <div
           class="card"
-          style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px grey;"
+          style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px rgba(100, 100, 100, 0.5);"
         >
           <img
             class="card-img-top"
@@ -93,7 +111,7 @@
 
         <div
           class="card"
-          style="width: 18rem; margin-top: 80px; height: 400px; box-shadow: 10px 8px grey;"
+          style="width: 18rem; margin-top: 80px; height: 400px; box-shadow: 10px 8px rgba(100, 100, 100, 0.5);"
         >
           <img
             class="card-img-top"
@@ -106,8 +124,56 @@
     </div>
     <!-- end homepage -->
 
+    <!-- yugioh -->
+    <div id="yugioh-page" style="display: none;">
+      <div class="yugioh-wrapper">
+        <div id="detail-card" style="display: none;"></div>
+        <div
+          id="yugioh-nav"
+          aria-label="Page navigation example"
+          style="margin-top: 30px; display: none;"
+        >
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" id="prev-page" tabindex="-1"
+                >Previous</a
+              >
+            </li>
+            <li class="page-item">
+              <a class="page-link" id="page1" href="#">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" id="page2" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" id="page3" href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" id="next-page" href="#">Next</a>
+            </li>
+          </ul>
+        </div>
+        <!--jumbotron-->
+        <div
+          id="jumbotron-listcard"
+          class="jumbotron jumbotron-fluid"
+          style="width: 90%; height: 555px; margin-left: 60px; display: none;"
+        >
+          <div class="container">
+            <div id="list-cards-wait"></div>
+            <div id="list-cards"></div>
+          </div>
+        </div>
+        <button id="btn-back-cardlist" type="button" class="btn btn-success">
+          Back to List Card
+        </button>
+        <!-- end jumbotron -->
+      </div>
+    </div>
+    <!-- end yugioh -->
+
     <!--pokemon-->
-    <div id="pokemon">
+    <div id="pokemon" style="display: none;">
       <div class="container">
         <div id="pokemon-cards">
           <div id="pokemon-search-bar">
@@ -304,16 +370,43 @@
             src="./img/logo2-home.webp"
             width="60px"
             height="60px"
-            alt="logo-home"/>
-          </a>
-          <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-          <input id="reg-username" name="username" type="text" class="form-control mb-2" placeholder="Username" required>
-          <input id="reg-email" name="email" type="email" class="form-control mb-2" placeholder="Email address" required autofocus>
-          <input id="reg-password" name="password" type="password" class="form-control mb-2" placeholder="Password" required>
-          <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">Register</button>
-          <p class="mt-2 text-center text-secondary">Already have an account?<a href="#" id="login-link"> Sign in</a></p>
-          <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
-        </form>
+            alt="logo-home"
+          />
+        </a>
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        <input
+          id="reg-username"
+          name="username"
+          type="text"
+          class="form-control mb-2"
+          placeholder="Username"
+          required
+        />
+        <input
+          id="reg-email"
+          name="email"
+          type="email"
+          class="form-control mb-2"
+          placeholder="Email address"
+          required
+          autofocus
+        />
+        <input
+          id="reg-password"
+          name="password"
+          type="password"
+          class="form-control mb-2"
+          placeholder="Password"
+          required
+        />
+        <button class="btn btn-lg btn-primary btn-block btn-sm" type="submit">
+          Register
+        </button>
+        <p class="mt-2 text-center text-secondary">
+          Already have an account?<a href="#" id="login-link"> Sign in</a>
+        </p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+      </form>
     </div>
     <!-- end register -->
 
