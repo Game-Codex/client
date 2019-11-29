@@ -74,7 +74,7 @@
     <!-- end navbar -->
 
     <!--homepage-->
-    <div id="home-page">
+    <div class="all-page" id="home-page">
       <div class="fullscreen-video-wrap">
         <video
           id="vidio-bg"
@@ -173,7 +173,7 @@
     <!-- end yugioh -->
 
     <!--pokemon-->
-    <div id="pokemon" style="display: none;">
+    <div class="all-page" id="pokemon" style="display: none;">
       <div class="container">
         <div id="pokemon-cards-wrapper">
 
@@ -239,7 +239,11 @@
     <!--end pokemon-->
 
     <!-- Dota Page -->
-    <div id="dota-page position-relative" style="height: 100vh;">
+    <div
+      class="all-page"
+      id="dota-page position-relative"
+      style="height: 100vh;"
+    >
       <div class="d-flex flex-wrap justify-content-between">
         <nav
           class="nav nav-pills d-flex flex-nowrap mt-5 ml-3 "
@@ -354,7 +358,7 @@
     <!-- login -->
     <div
       id="login"
-      class="mt-5 container text-center justify-content-center border rounded-sm bg-light"
+      class="all-page mt-5 container text-center justify-content-center border rounded-sm bg-light"
       style="width:30%; height:75vh"
     >
       <form id="login-form">
@@ -399,7 +403,9 @@
           <div class="col-md-4"></div>
         </div>
         <p class="mt-2 text-center text-secondary">
-          Don't have an account?<a href="#" id="reg-link"> Sign up</a>
+          Don't have an account?<a href="" onclick="showRegister(event)">
+            Sign up</a
+          >
         </p>
         <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
       </form>
@@ -409,7 +415,7 @@
     <!-- register -->
     <div
       id="register"
-      class="mt-5 container text-center justify-content-center border rounded-sm bg-light"
+      class="all-page mt-5 container text-center justify-content-center border rounded-sm bg-light"
       style="width:30%; height:75vh"
     >
       <form id="register-form">

@@ -1,11 +1,12 @@
 $(document).ready(function() {
+  showLogin()
   // pokemonPopulate()
-  fetchDotaHeroes()
-  $('.navbar').hide()
-  $('#home-page').hide()
-  $('#register').hide()
-  $('#login').hide()
-  $('#pokemon').hide()
+  // fetchDotaHeroes()
+  // $('.navbar').hide()
+  // $('#home-page').hide()
+  // $('#register').hide()
+  // $('#login').hide()
+  // $('#pokemon').hide()
   // showRegister()
   // login()
   // submitRegister()
@@ -47,5 +48,15 @@ $(document).ready(function() {
     $('#jumbotron-listcard').show()
   })
 })
-// pokemonPopulate();
-//home
+
+function showLogin(e) {
+  if (e) e.preventDefault()
+  $('.all-page').hide()
+  $('#login').show()
+}
+
+function showRegister(e) {
+  if (e) e.preventDefault()
+  $('.all-page').hide()
+  $('#register').show()
+}
