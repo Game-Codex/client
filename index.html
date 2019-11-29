@@ -175,17 +175,65 @@
     <!--pokemon-->
     <div id="pokemon" style="display: none;">
       <div class="container">
-        <div id="pokemon-cards">
-          <div id="pokemon-search-bar">
-            <input type="text" id="pokemon-search-input" />
-          </div>
+        <div id="pokemon-cards-wrapper">
 
-          <div id="pokemon-card-board">
-            <!-- iterate cards inside #pokemon-card-board -->
+          <div id="pokemon-cards">
+            <div id="pokemon-search-bar">
+              <form id="form-pokemon-search">
+  
+                <input type="text" id="pokemon-search-input" placeholder="search pokemon" />
+                <input type="submit" id="form-pokemon-submit">
+              </form>
+            </div>
+  
+            <div id="pokemon-card-board">
+              <div id="pokemon-card-board-tabs">
+  
+                <div class="pokemon-tab tab-selected" id="pokemon-tab-all">
+                  <span>All</span>
+                </div>
+                <div class="pokemon-tab">
+                  <span id="pokemon-tab-name1"></span>
+                </div>
+                <div class="pokemon-tab">
+                    <span id="pokemon-tab-name2"></span>
+                </div>
+                <div class="pokemon-tab">
+                    <span id="pokemon-tab-name3"></span>
+                </div>
+              </div>
+  
+              <div id="pokemon-card-list">
+  
+              </div>
+              <!-- iterate cards inside #pokemon-card-board -->
+            </div>
           </div>
         </div>
 
-        <div class="pagination"></div>
+        <div id="pokemon-detail-wrapper">
+
+          <div id="pokemon-detail">
+            <a id="pokemon-detail-image-a" href="">
+              <img id="pokemon-detail-image" src="" alt"">
+            </a>
+
+            <div id="pokemon-detail-body">
+
+              <div id="pokemon-detail-header">
+  
+                <h3 id="pokemon-detail-name"></h3>
+                <h5 id="pokemon-detail-type"></h5>
+              </div>
+    
+              <div class="pokemon-detail-skills">
+              </div>
+              
+              <a href="#" onclick="backToList()"><<</a>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
     <!--end pokemon-->
