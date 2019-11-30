@@ -1,67 +1,71 @@
-var vidio = document.getElementById("vidio-bg");
-const baseUrl = "http://localhost:3000/yugioh";
+var vidio = document.getElementById('vidio-bg')
+const baseUrl = 'http://localhost:3000/yugioh'
 function getCards(page) {
-  $("#list-cards").empty();
-  $("#list-cards-wait").empty();
-  getCardWait();
-  $("#list-cards-wait").show();
+  $('#list-cards').empty()
+  $('#list-cards-wait').empty()
+  getCardWait()
+  $('#list-cards-wait').show()
+  toast('Loading')
   $.ajax({
-    url: baseUrl + "/",
-    method: "GET",
+    url: baseUrl + '/',
+    method: 'GET',
     data: {
       pageNow: page
-    }
+    },
+    headers: { access_token: localStorage.getItem('access_token') }
   })
     .done(response => {
-      $("#list-cards-wait").hide();
+      Swal.close()
+      $('#list-cards-wait').hide()
       // console.log(response);
       response.forEach(element => {
-        var name = element.name.replace(/[^a-zA-Z0-9 ]/g, "");
-        $("#list-cards").append(`
+        var name = element.name.replace(/[^a-zA-Z0-9 ]/g, '')
+        $('#list-cards').append(`
         <figure>
           <a onclick="detailCard('${name}')"><img
               src="${element.card_images[0].image_url_small}"
               alt="card"
           /></a>
         </figure>
-        `);
-      });
+        `)
+      })
     })
     .fail(err => {
-      console.log(err);
+      console.log(err)
     })
-    .always(() => {});
+    .always(() => {})
 }
 
 function getCardWait() {
-  $("#btn-back-cardlist").hide();
-  $("#yugioh-nav").show();
-  $("list-cards-wait").empty();
+  $('#btn-back-cardlist').hide()
+  $('#yugioh-nav').show()
+  $('list-cards-wait').empty()
   for (let i = 0; i < 12; i++) {
-    $("#list-cards-wait").append(`
+    $('#list-cards-wait').append(`
     <figure>
     <a ><img
     src="./img/backsidecard.jpg" widht="168" height="246"
     alt="card"
     /></a>
     </figure>
-    `);
+    `)
     // $("#list-cards-wait").show();
   }
 }
 
 function detailCard(name) {
-  $("#jumbotron-listcard").hide();
-  $("#yugioh-nav").hide();
-  $("#detail-card").show();
-  $("#detail-card").empty();
+  $('#jumbotron-listcard').hide()
+  $('#yugioh-nav').hide()
+  $('#detail-card').show()
+  $('#detail-card').empty()
   $.ajax({
     url: baseUrl + `/detail?name=${name}`,
-    method: "GET"
+    method: 'GET',
+    headers: { access_token: localStorage.getItem('access_token') }
   })
     .done(response => {
-      $("#btn-back-cardlist").show();
-      $("#detail-card").append(`
+      $('#btn-back-cardlist').show()
+      $('#detail-card').append(`
       <div id="detailcard-img">
         <img
           src="${response[0].card_images[0].image_url}"
@@ -122,18 +126,18 @@ function detailCard(name) {
           </span>
         </div>
       </div>
-      `);
+      `)
     })
     .fail(err => {
-      console.log(err);
+      console.log(err)
     })
-    .always();
+    .always()
 }
 
 function pauseVid() {
-  vidio.pause();
+  vidio.pause()
 }
 
 function resumeVid() {
-  vidio.play();
+  vidio.play()
 }

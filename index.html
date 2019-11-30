@@ -28,11 +28,12 @@
     <link rel="stylesheet" href="css/dota.css" />
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="stylesheet" href="./css/yugioh.css" />
+    <link rel="stylesheet" href="css/pokemon.css" />
     <title>Game Codex</title>
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow p-1 mb-0">
+    <nav class="navbar navbar-expand-lg navbar-light shadow p-1 mb-0" id="main-nav">
       <a class="navbar-brand" href="#"
         ><img
           src="./img/logo2-home.webp"
@@ -105,6 +106,7 @@
         <div
           class="card"
           style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px rgba(100, 100, 100, 0.5);"
+          id="goPokemon"
         >
           <img
             class="card-img-top"
@@ -131,7 +133,7 @@
     <!-- end homepage -->
 
     <!-- yugioh -->
-    <div id="yugioh-page" style="display: none;">
+    <div class="all-page" id="yugioh-page" style="display: none;">
       <div class="yugioh-wrapper">
         <div id="detail-card" style="display: none;"></div>
         <div
@@ -182,19 +184,20 @@
     <div class="all-page" id="pokemon" style="display: none;">
       <div class="container">
         <div id="pokemon-cards-wrapper">
-
           <div id="pokemon-cards">
             <div id="pokemon-search-bar">
               <form id="form-pokemon-search">
-  
-                <input type="text" id="pokemon-search-input" placeholder="search pokemon" />
-                <input type="submit" id="form-pokemon-submit">
+                <input
+                  type="text"
+                  id="pokemon-search-input"
+                  placeholder="search pokemon"
+                />
+                <input type="submit" id="form-pokemon-submit" value="Submit" />
               </form>
             </div>
-  
+
             <div id="pokemon-card-board">
               <div id="pokemon-card-board-tabs">
-  
                 <div class="pokemon-tab tab-selected" id="pokemon-tab-all">
                   <span>All</span>
                 </div>
@@ -202,42 +205,35 @@
                   <span id="pokemon-tab-name1"></span>
                 </div>
                 <div class="pokemon-tab">
-                    <span id="pokemon-tab-name2"></span>
+                  <span id="pokemon-tab-name2"></span>
                 </div>
                 <div class="pokemon-tab">
-                    <span id="pokemon-tab-name3"></span>
+                  <span id="pokemon-tab-name3"></span>
                 </div>
               </div>
-  
-              <div id="pokemon-card-list">
-  
-              </div>
+
+              <div id="pokemon-card-list"></div>
               <!-- iterate cards inside #pokemon-card-board -->
             </div>
           </div>
         </div>
 
         <div id="pokemon-detail-wrapper">
-
           <div id="pokemon-detail">
             <a id="pokemon-detail-image-a" href="">
               <img id="pokemon-detail-image" src="" alt"">
             </a>
 
             <div id="pokemon-detail-body">
-
               <div id="pokemon-detail-header">
-  
                 <h3 id="pokemon-detail-name"></h3>
                 <h5 id="pokemon-detail-type"></h5>
               </div>
-    
-              <div class="pokemon-detail-skills">
-              </div>
-              
+
+              <div class="pokemon-detail-skills"></div>
+
               <a href="#" onclick="backToList()"><<</a>
             </div>
-
           </div>
         </div>
       </div>
@@ -497,11 +493,11 @@
 
     <script src="js/global-utils.js"></script>
     <script src="js/pokemon.js"></script>
+    <script src="js/yugioh.js"></script>
     <script src="js/register.js"></script>
     <script src="js/loginGoogle.js"></script>
     <script src="js/login.js"></script>
     <script src="js/dota.js"></script>
-    <script src="js/yugioh.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

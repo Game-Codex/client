@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 
-#nav {
+#main-nav {
   margin-bottom: 0px !important;
   background: #bdc3c7; /* fallback for old browsers */
   background: -webkit-linear-gradient(
