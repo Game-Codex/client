@@ -1,59 +1,54 @@
-
 const numOfTypes = 3
 
 function fillPokemonTypes() {
-   
-   return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
+    const types = []
 
-      const types = []
-
-      $.ajax({
-   
-         method: 'get',
-         url: `http://localhost:3000/pokemon/getTypes/${numOfTypes}`
-      })
+    toast('Loading')
+    $.ajax({
+      method: 'get',
+      url: `http://localhost:3000/pokemon/getTypes/${numOfTypes}`,
+      headers: { access_token: localStorage.getItem('access_token') }
+    })
       .done(pokemonTypes => {
-   
-         for(let i in pokemonTypes) types.push(pokemonTypes[i])
-         
-         // set the tabs
-         $('#pokemon-tab-name1').text(pokemonTypes[0])
-         $('#pokemon-tab-name2').text(pokemonTypes[1])
-         $('#pokemon-tab-name3').text(pokemonTypes[2])
+        Swal.close()
+        for (let i in pokemonTypes) types.push(pokemonTypes[i])
 
-         resolve(types)
+        // set the tabs
+        $('#pokemon-tab-name1').text(pokemonTypes[0])
+        $('#pokemon-tab-name2').text(pokemonTypes[1])
+        $('#pokemon-tab-name3').text(pokemonTypes[2])
+
+        resolve(types)
       })
       .fail(error => reject(error))
-   })
+  })
 }
 
 function fillCurrentCards() {
-
-   return new Promise((resolve, reject) => {
-
-      $.ajax({
-   
-         method: 'get',
-         url: `http://localhost:3000/pokemon/getByTypes/all`
-      })
+  return new Promise((resolve, reject) => {
+    toast('Loading')
+    $.ajax({
+      method: 'get',
+      url: `http://localhost:3000/pokemon/getByTypes/all`,
+      headers: { access_token: localStorage.getItem('access_token') }
+    })
       .done(cards => {
-
-         fillTable(cards)
-         resolve(cards)
-
+        Swal.close()
+        fillTable(cards)
+        resolve(cards)
       })
       .fail(error => reject(error))
-   })
+  })
 }
 
 function fillTable(cards) {
+  $('#pokemon-card-list').empty()
 
-   $('#pokemon-card-list').empty()
+  cards.forEach(card => {
+    console.log(typeof card.id)
 
-   cards.forEach((card) => {
-      console.log(typeof card.id)
-      
-      $('#pokemon-card-list').append(`
+    $('#pokemon-card-list').append(`
 
          <div class="individual-card">
 
@@ -64,147 +59,132 @@ function fillTable(cards) {
 
          </div>
       `)
-   })
+  })
 }
 
 function showDetail(id) {
-   event.preventDefault()
-   $.ajax({
+  event.preventDefault()
+  toast('Loading')
+  $.ajax({
+    url: `http://localhost:3000/pokemon/getDetail/${id}`,
+    method: `get`,
+    headers: { access_token: localStorage.getItem('access_token') }
+  }).then(card => {
+    Swal.close()
+    $('#pokemon-detail-image-a').attr('href', card.imageUrlHiRes)
+    $('#pokemon-detail-image').attr('src', card.imageUrl)
+    $('#pokemon-detail-name').text(card.name)
+    $('#pokemon-detail-type').text(card.types[0])
 
-      url: `http://localhost:3000/pokemon/getDetail/${id}`,
-      method: `get`
-   })
-   .then(card => {
-
-      // fill
-      $('#pokemon-detail-image-a').attr('href', card.imageUrlHiRes)
-      $('#pokemon-detail-image').attr('src', card.imageUrl)
-      $('#pokemon-detail-name').text(card.name)
-      $('#pokemon-detail-type').text(card.types[0])
-
-      card.attacks.forEach((skill, i) => {
-         
-         $('.pokemon-detail-skills').append(`
+    card.attacks.forEach((skill, i) => {
+      $('.pokemon-detail-skills').append(`
 
             <div class="pokemon-detail-each-skill">
                <h5>${skill.name}</h5>
                <p>${skill.text}</p>
             </div
          `)
-      })
+    })
 
-      // hide-show
-      $('#pokemon-cards-wrapper').hide()
-      $('#pokemon-detail-wrapper').show()
-   })
+    // hide-show
+    $('#pokemon-cards-wrapper').hide()
+    $('#pokemon-detail-wrapper').show()
+  })
 }
 
 function backToList() {
+  event.preventDefault()
 
-   event.preventDefault()
-
-   $('#pokemon-cards-wrapper').show()
-   $('#pokemon-detail-wrapper').hide()
+  $('#pokemon-cards-wrapper').show()
+  $('#pokemon-detail-wrapper').hide()
 }
 
 function fillCurrentCardsWithTypes(types) {
+  const promises = []
 
-      const promises = []
+  for (let i in types) {
+    promises.push(
+      new Promise((resolve, reject) => {
+        toast('Loading')
+        $.ajax({
+          method: 'get',
+          url: `http://localhost:3000/pokemon/getByTypes/${types[i]}`,
+          headers: { access_token: localStorage.getItem('access_token') }
+        })
+          .done(cards => {
+            Swal.close()
+            resolve(cards)
+          })
+          .fail(error => reject(error))
+      })
+    )
+  }
 
-      for(let i in types) {
-
-         promises.push(new Promise((resolve, reject) => {
-
-            $.ajax({
-      
-               method: 'get',
-               url: `http://localhost:3000/pokemon/getByTypes/${types[i]}`
-            })
-            .done(cards => {
-               
-               resolve(cards)
-            })
-            .fail(error => reject(error))
-         }))
-      }
-
-      return promises
-
+  return promises
 }
 
 $('#form-pokemon-submit').click(function(event) {
-
-   event.preventDefault()
-   
-   $.ajax({
-      
-      method: 'post',
-      url: 'http://localhost:3000/pokemon/cards',
-      data: {name: $('#pokemon-search-input').val()}
-   })
-   .done(cards => {
-
+  event.preventDefault()
+  toast('Loading')
+  $.ajax({
+    method: 'post',
+    url: 'http://localhost:3000/pokemon/cards',
+    data: { name: $('#pokemon-search-input').val() },
+    headers: { access_token: localStorage.getItem('access_token') }
+  })
+    .done(cards => {
+      Swal.close()
       fillTable(cards)
-   })
-   .fail(error => console.log(error))
+    })
+    .fail(error => console.log(error))
 })
 
 $('.pokemon-tab').click(function(event) {
-
-   $('.pokemon-tab').removeClass('tab-selected')
-   this.classList.add('tab-selected')
-   const typeName = $('.tab-selected span').text()   
-
-   $.ajax({
-      
-      url: `http://localhost:3000/pokemon/getByTypes/${typeName}`,
-      method: 'get'
-   })
-   .done(cards => {
-
+  $('.pokemon-tab').removeClass('tab-selected')
+  this.classList.add('tab-selected')
+  const typeName = $('.tab-selected span').text()
+  toast('Loading')
+  $.ajax({
+    url: `http://localhost:3000/pokemon/getByTypes/${typeName}`,
+    method: 'get',
+    headers: { access_token: localStorage.getItem('access_token') }
+  })
+    .done(cards => {
+      Swal.close()
       fillTable(cards)
-   })
-   .fail(error => console.log(error))
+    })
+    .fail(error => console.log(error))
 })
 
 function pokemonPopulate() {
+  const PokemonCards = []
+  const PokemonTypes = []
 
-   const PokemonCards = []
-    const PokemonTypes = []
-  
-    fillCurrentCards()
+  fillCurrentCards()
     .then(cards => {
-  
       const tempStack = []
-  
-      cards.forEach((card) => {
-  
+
+      cards.forEach(card => {
         tempStack.push(card)
       })
-  
+
       PokemonCards.push(tempStack)
       return fillPokemonTypes()
     })
     .then(types => {
-  
-      types.forEach((type) => PokemonTypes.push(type))
+      types.forEach(type => PokemonTypes.push(type))
       return Promise.all(fillCurrentCardsWithTypes(types))
     })
     .then(cardsByType => {
-      
       cardsByType.forEach((stack, i) => {
-  
         let tempStack = []
-  
+
         stack.forEach((card, j) => {
-  
           tempStack.push(card)
         })
-  
+
         PokemonCards.push(tempStack)
       })
     })
     .catch(error => console.log(error))
 }
-
-

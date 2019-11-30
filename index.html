@@ -28,11 +28,12 @@
     <link rel="stylesheet" href="css/dota.css" />
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="stylesheet" href="./css/yugioh.css" />
+    <link rel="stylesheet" href="css/pokemon.css" />
     <title>Game Codex</title>
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow p-1 mb-0">
+    <nav class="navbar navbar-expand-lg navbar-light shadow p-1 mb-0" id="main-nav">
       <a class="navbar-brand" href="#"
         ><img
           src="./img/logo2-home.webp"
@@ -66,7 +67,12 @@
             >
           </li>
         </ul>
-        <button type="button" class="btn btn-dark mr-3" onclick="signOut();">
+        <button
+          type="button"
+          class="btn btn-dark mr-3"
+          onclick="signOut();"
+          id="btn-signout"
+        >
           SignOut
         </button>
       </div>
@@ -74,7 +80,7 @@
     <!-- end navbar -->
 
     <!--homepage-->
-    <div id="home-page">
+    <div class="all-page" id="home-page">
       <div class="fullscreen-video-wrap">
         <video
           id="vidio-bg"
@@ -100,6 +106,7 @@
         <div
           class="card"
           style="width: 18rem; margin-right: 50px; margin-top: 80px; height: 400px; box-shadow: 10px 8px rgba(100, 100, 100, 0.5);"
+          id="goPokemon"
         >
           <img
             class="card-img-top"
@@ -112,6 +119,7 @@
         <div
           class="card"
           style="width: 18rem; margin-top: 80px; height: 400px; box-shadow: 10px 8px rgba(100, 100, 100, 0.5);"
+          onclick="showDotaPage(event)"
         >
           <img
             class="card-img-top"
@@ -125,7 +133,7 @@
     <!-- end homepage -->
 
     <!-- yugioh -->
-    <div id="yugioh-page" style="display: none;">
+    <div class="all-page" id="yugioh-page" style="display: none;">
       <div class="yugioh-wrapper">
         <div id="detail-card" style="display: none;"></div>
         <div
@@ -173,22 +181,23 @@
     <!-- end yugioh -->
 
     <!--pokemon-->
-    <div id="pokemon" style="display: none;">
+    <div class="all-page" id="pokemon" style="display: none;">
       <div class="container">
         <div id="pokemon-cards-wrapper">
-
           <div id="pokemon-cards">
             <div id="pokemon-search-bar">
               <form id="form-pokemon-search">
-  
-                <input type="text" id="pokemon-search-input" placeholder="search pokemon" />
-                <input type="submit" id="form-pokemon-submit">
+                <input
+                  type="text"
+                  id="pokemon-search-input"
+                  placeholder="search pokemon"
+                />
+                <input type="submit" id="form-pokemon-submit" value="Submit" />
               </form>
             </div>
-  
+
             <div id="pokemon-card-board">
               <div id="pokemon-card-board-tabs">
-  
                 <div class="pokemon-tab tab-selected" id="pokemon-tab-all">
                   <span>All</span>
                 </div>
@@ -196,42 +205,35 @@
                   <span id="pokemon-tab-name1"></span>
                 </div>
                 <div class="pokemon-tab">
-                    <span id="pokemon-tab-name2"></span>
+                  <span id="pokemon-tab-name2"></span>
                 </div>
                 <div class="pokemon-tab">
-                    <span id="pokemon-tab-name3"></span>
+                  <span id="pokemon-tab-name3"></span>
                 </div>
               </div>
-  
-              <div id="pokemon-card-list">
-  
-              </div>
+
+              <div id="pokemon-card-list"></div>
               <!-- iterate cards inside #pokemon-card-board -->
             </div>
           </div>
         </div>
 
         <div id="pokemon-detail-wrapper">
-
           <div id="pokemon-detail">
             <a id="pokemon-detail-image-a" href="">
               <img id="pokemon-detail-image" src="" alt"">
             </a>
 
             <div id="pokemon-detail-body">
-
               <div id="pokemon-detail-header">
-  
                 <h3 id="pokemon-detail-name"></h3>
                 <h5 id="pokemon-detail-type"></h5>
               </div>
-    
-              <div class="pokemon-detail-skills">
-              </div>
-              
+
+              <div class="pokemon-detail-skills"></div>
+
               <a href="#" onclick="backToList()"><<</a>
             </div>
-
           </div>
         </div>
       </div>
@@ -239,7 +241,11 @@
     <!--end pokemon-->
 
     <!-- Dota Page -->
-    <div id="dota-page position-relative" style="height: 100vh;">
+    <div
+      class="all-page position-relative"
+      id="dota-page"
+      style="height: 100vh;"
+    >
       <div class="d-flex flex-wrap justify-content-between">
         <nav
           class="nav nav-pills d-flex flex-nowrap mt-5 ml-3 "
@@ -354,10 +360,10 @@
     <!-- login -->
     <div
       id="login"
-      class="mt-5 container text-center justify-content-center border rounded-sm bg-light"
+      class="all-page mt-5 container text-center justify-content-center border rounded-sm bg-light"
       style="width:30%; height:75vh"
     >
-      <form id="login-form">
+      <form id="login-form" onsubmit="loginUser(event)">
         <a class="navbar-brand" href="#"
           ><img
             src="./img/logo2-home.webp"
@@ -399,7 +405,9 @@
           <div class="col-md-4"></div>
         </div>
         <p class="mt-2 text-center text-secondary">
-          Don't have an account?<a href="#" id="reg-link"> Sign up</a>
+          Don't have an account?<a href="" onclick="showRegister(event)">
+            Sign up</a
+          >
         </p>
         <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
       </form>
@@ -409,10 +417,10 @@
     <!-- register -->
     <div
       id="register"
-      class="mt-5 container text-center justify-content-center border rounded-sm bg-light"
+      class="all-page mt-5 container text-center justify-content-center border rounded-sm bg-light"
       style="width:30%; height:75vh"
     >
-      <form id="register-form">
+      <form id="register-form" onsubmit="submitRegister(event)">
         <a class="navbar-brand" href="#"
           ><img
             src="./img/logo2-home.webp"
@@ -451,7 +459,9 @@
           Register
         </button>
         <p class="mt-2 text-center text-secondary">
-          Already have an account?<a href="#" id="login-link"> Sign in</a>
+          Already have an account?<a href="" onclick="showLogin(event)">
+            Sign in</a
+          >
         </p>
         <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
       </form>
@@ -483,11 +493,11 @@
 
     <script src="js/global-utils.js"></script>
     <script src="js/pokemon.js"></script>
+    <script src="js/yugioh.js"></script>
     <script src="js/register.js"></script>
     <script src="js/loginGoogle.js"></script>
     <script src="js/login.js"></script>
     <script src="js/dota.js"></script>
-    <script src="js/yugioh.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

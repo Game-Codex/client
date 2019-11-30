@@ -1,17 +1,8 @@
 $(document).ready(function() {
-  // pokemonPopulate()
-  fetchDotaHeroes()
-  $('.navbar').hide()
-  $('#home-page').hide()
-  $('#register').hide()
-  $('#login').hide()
-  $('#pokemon').hide()
-  // showRegister()
-  // login()
-  // submitRegister()
-  // loginUser()
+  if (localStorage.getItem('access_token')) showHomePage()
+  else showLogin()
   $('#game-codex').click(function() {
-    $('#yugioh-page').hide()
+    $('.all-page').hide()
     $('#home-page').show()
     resumeVid()
   })
@@ -46,6 +37,41 @@ $(document).ready(function() {
     $('#detail-card').hide()
     $('#jumbotron-listcard').show()
   })
+
+  $('#goPokemon').click(() => {
+    pauseVid()
+    $('.all-page').hide()
+    $('#pokemon').show()
+    pokemonPopulate()
+  })
 })
-// pokemonPopulate();
-//home
+
+function showLogin(e) {
+  if (e) e.preventDefault()
+  $('#btn-signout').hide()
+  $('.all-page').hide()
+  $('#login').show()
+}
+
+function showRegister(e) {
+  if (e) e.preventDefault()
+  $('#btn-signout').hide()
+  $('.all-page').hide()
+  $('#register').show()
+}
+
+function showHomePage(e) {
+  if (e) e.preventDefault()
+  resumeVid()
+  $('#btn-signout').show()
+  $('.all-page').hide()
+  $('#home-page').show()
+}
+
+function showDotaPage(e) {
+  if (e) e.preventDefault()
+  $('.all-page').hide()
+  $('#dota-page').show()
+  pauseVid()
+  fetchDotaHeroes()
+}

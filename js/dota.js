@@ -5,7 +5,8 @@ function fetchDotaHeroes() {
   toast('Loading')
   axios({
     method: 'get',
-    url: 'http://localhost:3000/dota'
+    url: 'http://localhost:3000/dota',
+    headers: { access_token: localStorage.getItem('access_token') }
   })
     .then(({ data }) => {
       dotaHeroes = data.heroes
@@ -59,7 +60,8 @@ function filterHeroByRole(role) {
   } else {
     axios({
       method: 'get',
-      url: `http://localhost:3000/dota/roles/${role}`
+      url: `http://localhost:3000/dota/roles/${role}`,
+      headers: { access_token: localStorage.getItem('access_token') }
     })
       .then(({ data }) => {
         $('#nav-hero-roles .nav-link').removeClass('active')
@@ -82,7 +84,8 @@ function showDotaCardDetail(e, id, name, imgurl) {
   $('#dota-hero-detail').show()
   axios({
     method: 'get',
-    url: `http://localhost:3000/dota/${id}`
+    url: `http://localhost:3000/dota/${id}`,
+    headers: { access_token: localStorage.getItem('access_token') }
   })
     .then(({ data }) => {
       const hero = data.hero
